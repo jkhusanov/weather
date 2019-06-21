@@ -1,16 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, Platform, KeyboardAvoidingView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Platform,
+  KeyboardAvoidingView,
+  ImageBackground,
+  View,
+} from 'react-native';
 
+import getImageForWeather from './utils/getImageForWeather';
 import SearchInput from './components/SearchInput';
 
 export default class App extends React.Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
-        <Text style={[styles.largeText, styles.textStyle]}>San Francisco</Text>
-        <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
-        <Text style={[styles.largeText, styles.textStyle]}>24°</Text>
-        <SearchInput placeholder="Your city" />
+        <ImageBackground
+          source={getImageForWeather('Clear')}
+          style={styles.imageContainer}
+          imageStyle={styles.image}
+        >
+          <View style={styles.detailsContainer}>
+            <Text style={[styles.largeText, styles.textStyle]}>San Francisco</Text>
+            <Text style={[styles.smallText, styles.textStyle]}>Light Cloud</Text>
+            <Text style={[styles.largeText, styles.textStyle]}>24°</Text>
+            <SearchInput placeholder="Your city" />
+          </View>
+        </ImageBackground>
       </KeyboardAvoidingView>
     );
   }
@@ -19,13 +35,27 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: '#34495E',
+  },
+  imageContainer: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+  },
+  detailsContainer: {
+    flex: 1,
     justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.1)',
+    paddingHorizontal: 20,
   },
   textStyle: {
     textAlign: 'center',
     fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'Roboto',
+    color: 'white',
   },
   largeText: {
     fontSize: 44,
