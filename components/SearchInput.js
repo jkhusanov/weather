@@ -28,7 +28,7 @@ export default class SearchInput extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput
-          autoCorrect={false}
+          autoCorrect={true}
           placeholder={placeholder}
           placeholderTextColor="white"
           underlineColorAndroid="transparent"
