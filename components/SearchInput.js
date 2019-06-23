@@ -1,54 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
-export default class SearchInput extends React.Component {
-  static propTypes = {
+export default function SearchInput(props) {
+  propTypes = {
     onSubmit: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
   };
 
-  static defaultProps = {
+  defaultProps = {
     placeholder: '',
   };
 
-  state = {
-    text: '',
-  };
+  const [text, setText] = useState('');
 
   handleChangeText = text => {
-    this.setState({ text });
+    setText(text);
   };
 
   handleSubmitEditing = () => {
-    const { onSubmit } = this.props;
-    const { text } = this.state;
+    const { onSubmit } = props;
 
     if (!text) return;
 
     onSubmit(text);
-    this.setState({ text: '' });
+    setText('');
   };
 
-  render() {
-    const { placeholder } = this.props;
-    const { text } = this.state;
-    return (
-      <View style={styles.container}>
-        <TextInput
-          autoCorrect={true}
-          placeholder={placeholder}
-          placeholderTextColor="white"
-          underlineColorAndroid="transparent"
-          style={styles.textInput}
-          clearButtonMode="always"
-          value={text}
-          onChangeText={this.handleChangeText}
-          onSubmitEditing={this.handleSubmitEditing}
-        />
-      </View>
-    );
-  }
+  const { placeholder } = props;
+  return (
+    <View style={styles.container}>
+      <TextInput
+        autoCorrect={true}
+        placeholder={placeholder}
+        placeholderTextColor="white"
+        underlineColorAndroid="transparent"
+        style={styles.textInput}
+        clearButtonMode="always"
+        value={text}
+        onChangeText={this.handleChangeText}
+        onSubmitEditing={this.handleSubmitEditing}
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
