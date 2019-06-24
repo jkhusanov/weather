@@ -20,7 +20,7 @@
 
 It's a simple app from the first chapter of the book
 
-- Uses **React Hooks**
+- Uses **React Hooks** in SearchInput function component
 - Minor style and assets improvements
 
 ## Preview
