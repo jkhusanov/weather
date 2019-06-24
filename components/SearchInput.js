@@ -3,15 +3,6 @@ import { View, TextInput, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default function SearchInput(props) {
-  propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    placeholder: PropTypes.string,
-  };
-
-  defaultProps = {
-    placeholder: '',
-  };
-
   const [text, setText] = useState('');
 
   handleChangeText = text => {
@@ -44,6 +35,15 @@ export default function SearchInput(props) {
     </View>
   );
 }
+
+SearchInput.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+};
+
+SearchInput.defaultProps = {
+  placeholder: '',
+};
 
 const styles = StyleSheet.create({
   container: {
