@@ -29,8 +29,8 @@ export default function SearchInput(props) {
         style={styles.textInput}
         clearButtonMode="always"
         value={text}
-        onChangeText={this.handleChangeText}
-        onSubmitEditing={this.handleSubmitEditing}
+        onChangeText={handleChangeText}
+        onSubmitEditing={handleSubmitEditing}
       />
     </View>
   );
