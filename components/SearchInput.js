@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function SearchInput(props) {
   const [text, setText] = useState('');
 
-  handleChangeText = text => {
+  const handleChangeText = text => {
     setText(text);
   };
 
